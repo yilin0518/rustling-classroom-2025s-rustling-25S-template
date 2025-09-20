@@ -43,7 +43,7 @@ impl TryFrom<(i16, i16, i16)> for Color {
     fn try_from(tuple: (i16, i16, i16)) -> Result<Self, Self::Error> {
         match tuple {
             (0..=255, 0..=255, 0..=255) => {
-                Ok(Color {red: tuple.0, green: tuple.1, blue: tuple.2})
+                Ok(Color {red: tuple.0 as u8, green: tuple.1 as u8, blue: tuple.2 as u8})
             }
             _ => {
                 Err(IntoColorError::IntConversion)
@@ -58,7 +58,7 @@ impl TryFrom<[i16; 3]> for Color {
     fn try_from(arr: [i16; 3]) -> Result<Self, Self::Error> {
         match arr {
             [0..=255, 0..=255, 0..=255] => {
-                Ok(Color {red: arr[0], green: arr[1], blue: arr[2]})
+                Ok(Color {red: arr[0] as u8, green: arr[1] as u8, blue: arr[2] as u8})
             }
             _ => {
                 Err(IntoColorError::IntConversion)
@@ -78,7 +78,7 @@ impl TryFrom<&[i16]> for Color {
             let (red, green, blue) = (slice[0], slice[1], slice[2]);
             match (red, green, blue) {
                 (0..=255, 0..=255, 0..=255) => {
-                    Ok(Color {red, green, blue})
+                    Ok(Color {red as u8, green as u8, blue as u8})
                 }
                 _ => {
                     Err(IntoColorError::IntConversion)

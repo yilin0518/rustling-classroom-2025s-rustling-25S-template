@@ -48,7 +48,7 @@ impl From<&str> for Person {
             return Person::default();
         }
         let v :Vec<_>= s.split(',').collect();
-        if v.size() != 2 {
+        if v.len() != 2 {
             return Person::default();
         } 
         let name :String = v[0].into();
@@ -56,11 +56,9 @@ impl From<&str> for Person {
             return Person::default();
         }
         let age = v[1].parse::<usize>();
-        if let Ok(age) = age {
-            return Person {name, age};
-        }
-        else {
-            return Person::default();
+        match age {
+            Ok(age) => Person{name ,age},
+            Err(e) => Person::default()
         }
     }
 }
