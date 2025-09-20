@@ -18,15 +18,15 @@
 
 // I AM NOT DONE
 
-pub struct ReportCard {
+pub struct ReportCard<T:Debug> {
     pub grade: f32,
     pub student_name: String,
     pub student_age: u8,
 }
 
-impl ReportCard {
+impl<T:Debug> ReportCard<T> {
     pub fn print(&self) -> String {
-        format!("{} ({}) - achieved a grade of {}",
+        format!("{} ({}) - achieved a grade of {:?}",
             &self.student_name, &self.student_age, &self.grade)
     }
 }
@@ -52,7 +52,7 @@ mod tests {
     fn generate_alphabetic_report_card() {
         // TODO: Make sure to change the grade here after you finish the exercise.
         let report_card = ReportCard {
-            grade: 2.1,
+            grade: String::from("A+"),
             student_name: "Gary Plotter".to_string(),
             student_age: 11,
         };
