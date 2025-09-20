@@ -26,7 +26,7 @@ fn char_counter<T: AsRef<str>>(arg: T) -> usize {
 fn num_sq<T: AsMut<U>, U: std::ops::Mul<Output = U> + Copy>(arg: &mut T) {
     // TODO: Implement the function body.
     let u = arg.as_mut();
-    u = u * u;
+    *u = *u * *u;
 }
 
 #[cfg(test)]

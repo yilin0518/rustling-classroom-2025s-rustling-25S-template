@@ -41,11 +41,11 @@ mod my_module {
                     output.push(string.to_uppercase());
                 },
                 Command::Trim => {
-                    output.push(string.trim());
+                    output.push(string.trim().into());
                 },
                 Command::Append(count) => {
                     let mut s = String::from(string);
-                    for _ in 0..count {
+                    for _ in 0..*count {
                         s+="bar";
                     }
                     output.push(s);

@@ -78,7 +78,7 @@ impl TryFrom<&[i16]> for Color {
             let (red, green, blue) = (slice[0], slice[1], slice[2]);
             match (red, green, blue) {
                 (0..=255, 0..=255, 0..=255) => {
-                    Ok(Color {red as u8, green as u8, blue as u8})
+                    Ok(Color {red: red as u8, green: green as u8, blue: blue as u8})
                 }
                 _ => {
                     Err(IntoColorError::IntConversion)
